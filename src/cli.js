@@ -1,4 +1,4 @@
 import readlineSync from 'readline-sync';
-export const getAnswerFromUser = (question) => {
-    return readlineSync.question(question);
-};
+
+const getAnswerFromUser = (question) => readlineSync.question(question);
+export default getAnswerFromUser;
