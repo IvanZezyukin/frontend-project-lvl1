@@ -10,7 +10,7 @@ const getRandomArithmeticProgression = () => {
     array.push(startItem += progressionStep);
   }
   const result = array.splice(indexOfHiddenElement, 1, '..');
-  return [array.join(' '), result.join()];
+  return [`${array.join(' ')}`, `${result.join()}`];
 };
 
 export default getRandomArithmeticProgression;

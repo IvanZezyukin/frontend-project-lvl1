@@ -16,14 +16,14 @@ const questionForPlayer = (question, result, name) => {
 };
 const dialogWithPlayer = (questions, results, name) => {
   let countOfRightAnswers = 0;
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < questions.length; i += 1) {
     if (questionForPlayer(questions[i], results[i], name)) {
       countOfRightAnswers += 1;
     } else {
       break;
     }
   }
-  if (countOfRightAnswers === 3) {
+  if (countOfRightAnswers === questions.length) {
     console.log(`Congratulations, ${name}!`);
   }
 };

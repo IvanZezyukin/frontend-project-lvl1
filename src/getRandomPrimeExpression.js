@@ -14,7 +14,7 @@ const isPrime = (number) => {
 
 const getRandomPrimeExpression = () => {
   const number = _.random(2, 100);
-  return [number, isPrime(number)];
+  return [`${number}`, `${isPrime(number)}`];
 };
 
 export default getRandomPrimeExpression;
