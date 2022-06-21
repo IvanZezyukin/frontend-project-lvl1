@@ -5,7 +5,7 @@ import getRandomArithmeticProgression from '../src/getRandomArithmeticProgressio
 
 // Let's welcome user, ask his name and introduce the game
 console.log('Welcome to the Brain Games!');
-const name = getAnswerFromUser('Please, write your name right here: ');
+const name = getAnswerFromUser('May I have your name? ');
 console.log(`Hello, ${name}!`);
 console.log('What number is missing in the progression?');
 
