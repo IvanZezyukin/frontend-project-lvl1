@@ -4,7 +4,7 @@
 import getAnswerFromUser from './cli.js';
 
 const questionForPlayer = (question, result, name) => {
-  console.log(question);
+  console.log(`Question: ${question}`);
   const answer = getAnswerFromUser('Your answer: ');
   if (answer === result) {
     console.log('Correct!');
