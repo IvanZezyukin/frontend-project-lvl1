@@ -3,18 +3,12 @@ import _ from 'lodash';
 const getRandomMathExpressionAndResult = () => {
   const x = _.random(1, 25);
   const y = _.random(1, 25);
-  const indexOfTypeOfMathExpression = _.random(1, 3);
-  let result = [];
-  if (indexOfTypeOfMathExpression === 1) {
-    result = [`${x} + ${y}`, `${x + y}`];
-  }
-  if (indexOfTypeOfMathExpression === 2) {
-    result = [`${x} - ${y}`, `${x - y}`];
-  }
-  if (indexOfTypeOfMathExpression === 3) {
-    result = [`${x} * ${y}`, `${x * y}`];
-  }
-  return result;
+  const typeOfMathExpression = ['+', '-', '*'];
+  const indexOfTypeOfMathExpression = _.random(0, 2);
+  const question = `${x} ${typeOfMathExpression[indexOfTypeOfMathExpression]} ${y}`;
+  // eslint-disable-next-line no-eval
+  const answer = `${eval(question)}`;
+  return [question, answer];
 };
 
 export default getRandomMathExpressionAndResult;
