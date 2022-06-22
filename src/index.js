@@ -1,9 +1,10 @@
-// This is the engine of all brain games
+// This is the universal engine of all my brain games
 // Designed for 3 question for a user
-// Need to call with name of a user and arrays of questions and answers
+// Need to call with game statement and game function
 import getAnswerFromUser from './cli.js';
 
-const questionForPlayer = (question, result, name) => {
+const questionForPlayer = (gameFunction, name) => {
+  const [question, result] = gameFunction();
   console.log(`Question: ${question}`);
   const answer = getAnswerFromUser('Your answer: ');
   if (answer === result) {
@@ -15,16 +16,17 @@ const questionForPlayer = (question, result, name) => {
   return false;
 };
 
-const dialogWithPlayer = (questions, results, name) => {
+const dialogWithPlayer = (gameFunction, name) => {
   let countOfRightAnswers = 0;
-  for (let i = 0; i < questions.length; i += 1) {
-    if (questionForPlayer(questions[i], results[i], name)) {
+  const quantityOfQuestions = 3;
+  for (let i = 0; i < quantityOfQuestions; i += 1) {
+    if (questionForPlayer(gameFunction, name)) {
       countOfRightAnswers += 1;
     } else {
       break;
     }
   }
-  if (countOfRightAnswers === questions.length) {
+  if (countOfRightAnswers === quantityOfQuestions) {
     console.log(`Congratulations, ${name}!`);
   }
 };
@@ -37,25 +39,11 @@ const getUserNameAndGreedHim = (gameStatement) => {
   return name;
 };
 
-const getArraysOfQuestionsAndResults = (gameFunction) => {
-  const questions = [];
-  const results = [];
-  const quantityOfQuestions = 3;
-  for (let i = 0; i < quantityOfQuestions; i += 1) {
-    const [question, result] = gameFunction();
-    questions.push(question);
-    results.push(result);
-  }
-  return [questions, results];
-};
-
 const gameEngine = (gameStatement, gameFunction) => {
   // Let's welcome user, ask his name and introduce the game
   const name = getUserNameAndGreedHim(gameStatement);
-  // Let's make arrays for the game
-  const [questions, results] = getArraysOfQuestionsAndResults(gameFunction);
   // Let's make dialog with a gamer!
-  dialogWithPlayer(questions, results, name);
+  dialogWithPlayer(gameFunction, name);
 };
 
 export default gameEngine;
