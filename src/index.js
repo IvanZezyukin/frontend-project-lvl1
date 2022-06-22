@@ -14,6 +14,7 @@ const questionForPlayer = (question, result, name) => {
   console.log(`Let's try again, ${name}!`);
   return false;
 };
+
 const dialogWithPlayer = (questions, results, name) => {
   let countOfRightAnswers = 0;
   for (let i = 0; i < questions.length; i += 1) {
@@ -28,4 +29,33 @@ const dialogWithPlayer = (questions, results, name) => {
   }
 };
 
-export default dialogWithPlayer;
+const getUserNameAndGreedHim = (gameStatement) => {
+  console.log('Welcome to the Brain Games!');
+  const name = getAnswerFromUser('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+  console.log(gameStatement);
+  return name;
+};
+
+const getArraysOfQuestionsAndResults = (gameFunction) => {
+  const questions = [];
+  const results = [];
+  const quantityOfQuestions = 3;
+  for (let i = 0; i < quantityOfQuestions; i += 1) {
+    const [question, result] = gameFunction();
+    questions.push(question);
+    results.push(result);
+  }
+  return [questions, results];
+};
+
+const gameEngine = (gameStatement, gameFunction) => {
+  // Let's welcome user, ask his name and introduce the game
+  const name = getUserNameAndGreedHim(gameStatement);
+  // Let's make arrays for the game
+  const [questions, results] = getArraysOfQuestionsAndResults(gameFunction);
+  // Let's make dialog with a gamer!
+  dialogWithPlayer(questions, results, name);
+};
+
+export default gameEngine;
